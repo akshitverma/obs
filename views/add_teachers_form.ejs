@@ -1,0 +1,20 @@
+<% include partials/admin_profile_head %>  
+ <div class="container"> 
+      <div class="jumbotron" align='center'>
+     <p></p>
+<!-- Form for adding Teachers -->
+      <form method='POST' id='addTeacher' action='/addTeacher'>
+       <input type=text name="username" placeholder="Enter Teacher's Username">
+       <p></p>
+       <input type=text name="name" placeholder="Full Name of Teacher">
+       <p></p>
+       <input type=text name="email" placeholder="Enter email">
+       <p></p>
+       <input type=password name="password" placeholder="Password">
+       <p></p>
+       <input type=password name="retype_password" placeholder="Retype Password">
+       <p></p>  
+       <button type="submit" name="addTeacher">Add this Teacher</button>
+    </form>
+      </div>
+</div>

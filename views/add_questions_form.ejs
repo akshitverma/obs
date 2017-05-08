@@ -1,0 +1,49 @@
+<% include partials/teacher_profile_head %>  
+<div class="container">
+      <div class="jumbotron" align='center'>
+     
+<!-- Form for adding Questions -->
+     <form class="form-signin" method="POST" action="/addQuestion">
+         <div class="form-group">
+             <label for="typeSelect">Select Course:</label>
+             <select class="form-control" id="course" name="course">
+                   <% for (var i=0; i < studentCourseIDS.length; i++) { 
+               
+            %>
+               <option value="<%= studentCourseIDS[i] %>"> <%= studentCourseNames[i] %> </option>
+            <% } %>
+            </select>
+          </div>
+          <div class="form-group">
+             <label for="typeSelectExam">Select Exam:</label>
+             <select class="form-control" id="examType" name="examType">
+                    <option value="1">CT - 1</option>
+                    <option value="2">CT - 2</option>
+                    <option value="3">PUT</option>
+            </select>
+          </div> 
+         <div class="form-group">
+              <label for="questionSection">Select question section</label>
+              <select class="form-control" id="questionSection" name="questionSection">
+                <option value="1">PART -I</option>
+                <option value="2">PART -II</option>
+                <option value="3">PART -III</option>
+              </select>
+         </div>
+         <div class="form-group">        
+            <label for="username">Question Description</label>
+            <input type="text" class="form-control" name = "questionDescription" id="questionDescription" placeholder="Question Description">
+         </div>
+         <div class="form-group">
+            <label for="co">Course Outcome</label>
+            <input type="text" class="form-control" id="co" name="co" placeholder="Enter CO1/CO2/CO3/CO4/CO5">
+         </div>
+  
+    <div class="form-group">      
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Add this Question</button>
+    </div>
+      </form>
+    </div>
+</div>    
+</body>
+</html>

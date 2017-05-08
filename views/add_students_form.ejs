@@ -1,0 +1,46 @@
+<% include partials/admin_profile_head %>  
+<div class="container">  
+      <div class="jumbotron" align='center'>
+     <p></p>
+<!-- Form for adding Teachers -->
+      <form method='POST' id='addStudents' action='/addStudents'>
+       <input type=text name="rollNumber" placeholder="Student Roll Number">
+       <p></p>
+       <input type=text name="name" placeholder="Full Name of Student">
+       <p></p>
+        <input type=text name="fathersName" placeholder="Father's Name of Student">
+       <p></p>
+       <input type=text name="email" placeholder="Email">
+       <p></p>
+       <input type=text name="session" placeholder="Session">
+        <p></p>
+        Branch :  
+       <select name="branch" form="branch">
+                 <option value="IT">Information Technology</option>
+                 
+       </select> 
+       
+      <p></p>
+      
+        Year :  
+       <select name="year" form="year">
+                 <option value="1">I</option>
+                 <option value="2">II</option>
+                 <option value="3">III</option>
+                 <option value="4">IV</option>
+       </select>
+       <p></p>
+        Subjects:
+         
+        <select name= "studentSubjects" id="example-getting-started" multiple="multiple">
+            <% for (var i=0; i < studentCourseIDS.length; i++) { 
+               
+            %>
+            <option value="<%= studentCourseIDS[i] %>"> <%= studentCourseNames[i] %> </option>
+            <% } %>
+        </select>
+          <p></p>
+       <button type="submit" name="login">Add this Student</button>
+    </form>
+      </div>
+</div>
