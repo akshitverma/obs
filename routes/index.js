@@ -20,7 +20,7 @@ Course.find({}, function(err, course){
     }); 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Outcome Based Education Management System'});
+  res.render('index', { title: 'Outcome Based Education Management System', message: null});
 });
 
 
@@ -58,7 +58,9 @@ router.get('/addCoursesForm', function(req, res, next) {
 
 router.get('/logout', function(req, res, next) {
     req.session.username = "";
-  res.render('index', { title: 'Outcome Based Education Management System' });
+            req.flash('info', 'You are now logged out.');
+             console.log('Invalid');
+             res.render('index', { message: req.flash('info'), title: "Outcome Based Education Management System"  });
 });
 
 module.exports = router;

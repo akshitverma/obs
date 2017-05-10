@@ -60,14 +60,14 @@ router.post('/', function(req, res, next) {
                 console.log(studentCourseIDS);
                 
             }
-              req.flash('info', 'Login via Teacher Successfull!')
+               req.flash('info', 'Login via Teacher Successfull!')
                res.render('teacher_profile', { title: 'Outcome Based Education Management System', message: req.flash('info'), name: req.body.username, studentCourseIDS: studentCourseIDS, studentCourseNames: studentCourseNames });
                  console.log("Teacher Profile Rendered!!!")
         }
          else 
         {
             console.log('Invalid');
-             res.render('error', { message: 'Wrong Choice', error: "Error happened.."  });
+            res.render('error', { message: 'Wrong Choice', error: "Error happened.."  });
         }
     }); 
                 //This db ends here....
@@ -78,15 +78,16 @@ router.post('/', function(req, res, next) {
         }
         else
             {
-                 req.flash('info', 'Wrong Credentials')
-                 console.log("Code fata.. wrong credentials")
-                 res.render('error', { message: 'Wrong Cedentials..', error: "Error happened.."  });
+             req.flash('info', 'Check your credentials and try again.');
+             console.log('Invalid');
+             res.render('index', { message: req.flash('info'), title: "Outcome Based Education Management System"  });
             }
         }
         else 
         {
-            console.log('Invalid');
-             res.render('error', { message: 'Some error occured!', error: "Error happened.."  });
+             req.flash('info', 'Check your credentials and try again.');
+             console.log('Invalid');
+             res.render('index', { message: req.flash('info'), title: "Outcome Based Education Management System"  });
         }
     });
     

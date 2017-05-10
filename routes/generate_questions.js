@@ -43,13 +43,22 @@ router.post('/', function(req, res, next) {
         break;
    }     
 
+function shuffle(a) {
+    var j, x, i;
+    for (i = a.length; i; i--) {
+        j = Math.floor(Math.random() * i);
+        x = a[i - 1];
+        a[i - 1] = a[j];
+        a[j] = x;
+    }
+}    
 Questions.find({courseID: paper_course}, function(err, question){
        if(question)
         {
             var questionsArray = question;
-            var question_paper_part1 = "<p>Part -I  Attempt all parts.  [2*10 = 20]</p><ol>"
-            var question_paper_part2 = "<p>Part -II  Attempt any four parts.  [5*4 = 20]</p><ol>"
-            var question_paper_part3 = "<p>Part -III  Attempt any two parts.  [2*10 = 20]</p><ol>"
+            var question_paper_part1 = "<h4>Part -I  Attempt all parts.  [2*10 = 20]</h4><ol>"
+            var question_paper_part2 = "<h4>Part -II  Attempt any four parts.  [5*4 = 20]</h4><ol>"
+            var question_paper_part3 = "<h4>Part -III  Attempt any two parts.  [2*10 = 20]</h4><ol>"
 
             console.log(questionsArray);
             var endPart1 = false;
@@ -59,6 +68,7 @@ Questions.find({courseID: paper_course}, function(err, question){
             var counter2 = 1; 
             var counter3 = 1;
             var questionIDS = [];
+             shuffle(questionsArray);           
             for(var i=0; i<questionsArray.length; i++)
                 {
                     
@@ -123,14 +133,15 @@ Questions.find({courseID: paper_course}, function(err, question){
                 else
                 {
                    req.flash('info', 'Question Paper generated successfully!')
-	               res.render('teacher_profile', { title: 'Outcome Based Education Management System',message: req.flash('info'), name: req.session.username,  studentCourseNames:  studentCourseNames,  studentCourseIDS:  studentCourseIDS  });
+//	               res.render('teacher_profile', { title: 'Outcome Based Education Management System',message: req.flash('info'), name: req.session.username,  studentCourseNames:  studentCourseNames,  studentCourseIDS:  studentCourseIDS  });
                    console.log("Question paper generated and recorded in database..");
+                    console.log(question_paper);
                 }
 	           });
                 //Generating Question Paper from HTML
                res.pdfFromHTML({
                  filename: 'generated.pdf',
-                 htmlContent: "<html><head></head><body><div align='center'><h2>Raj Kumar Goel Institute of Technology</h2><p></p><h4>Dept. of Information Technology</h4><p></p><h4>"+examName +"  Paper Code:"+paper_course+"</h4></div>" +question_paper+ "</body></html>"
+                 htmlContent: "<html><head></head><body><div align='center'><h2>Raj Kumar Goel Institute of Technology</h2><p></p><h4>Dept. of Information Technology</h4><p></p><h4>"+examName +"  Paper Code:"+paper_course+"</h4></div>" +question_paper+ "<h4 align='center'>******* Best of Luck! *******</h4></body></html>"
         
                });
         }
