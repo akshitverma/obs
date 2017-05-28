@@ -103,13 +103,13 @@ QuestionPaper.find({ examName: selected_paper }, function(err, selectedquestionp
 
 
 //HIT 2 for Mark students Form
-router.get('/', function(req, res, next) {
+router.post('/', function(req, res, next) {
     getCourses(); 
     getQuestionPaper();
     //console.log("Here")
     //console.log(req.session.username);
     selected_paper = req.body.exam;
-    console.log(selected_paper);
+    console.log("Hellooooooooo");
     getStudents();
     getSelectedQuestionPaper();
    
