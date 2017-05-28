@@ -3,7 +3,12 @@ var mongoose = require('mongoose');
 
 var questionPaperSchema = mongoose.Schema({  
   
-    questionID: [String]
+    examID: String,
+    examName: String,
+    questionID: [String],
+    questionDesc: [String],
+    questionCO: [String],
+    questionPart: [String]
     
 });
 

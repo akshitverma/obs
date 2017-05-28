@@ -13,7 +13,7 @@
 
 </head>
 
-<body>
+<body background="/images/bg.jpg">
 
 <div class="container">
  <% if (message) { %> 
@@ -27,11 +27,10 @@
      <% } %>
 <h1 class="form-signin-heading" align="center"><p><b><%= title %></b></p></h1>
 <hr>
-<h3 class="form-signin-heading" align="center"><p><b>Welcome to <%= title %></b></p> <p><i>.....</i></p> </h3>
+<h3 class="form-signin-heading" align="center"><p><b>Welcome to <%= title %></b></p> <p><i>Login to your portal</i></p> </h3>
 
       <form class="form-signin" method="POST" action="/login">
 	
-        <h3 class="form-signin-heading"><p color="black">Login to your portal.</p></h3>
  <div class="form-group">        
         <label for="username">Username</label>
         <input type="text" class="form-control" name = "username" id="username" aria-describedby="emailHelp" placeholder="Username" required>
@@ -55,9 +54,6 @@
 
 </div> 
 <!-- /container -->
-<br>
-<br>
-<br>
 <hr>
 <footer><center>|Akshit Verma, Chitranshi Sengar| All rights reserverd. 2017 </center></footer>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

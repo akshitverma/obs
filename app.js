@@ -22,6 +22,7 @@ var addCourses = require('./routes/courses.js');
 var addStudents = require('./routes/students.js');
 var addQuestions = require('./routes/questions.js')
 var generateQuestions = require('./routes/generate_questions')
+var entermarks = require('./routes/marks.js');
 
 var app = express();
 
@@ -51,6 +52,7 @@ app.use('/addCourses', addCourses);
 app.use('/addStudents', addStudents);
 app.use('/addQuestion', addQuestions);
 app.use('/generateQuestionPaper', generateQuestions);
+app.use('/entermarks', entermarks);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

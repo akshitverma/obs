@@ -1,0 +1,22 @@
+<% include partials/admin_profile_head %>  
+ <div class="container"> 
+      <div class="jumbotron" align='center'>
+     <p></p>
+<!-- For showing Students in DB -->
+    
+       <table class="table table-striped">
+          <tr>
+            <th>Roll Number</th>
+            <th>Student Name</th>
+            <th>Action</th>
+          </tr>
+          <% for (var i=0; i<studentNames.length; i++) { %> 
+          <tr>
+            <td> <%= studentRolls[i] %> </td>
+            <td> <%= studentNames[i] %> </td>
+            <td><a class="btn btn-danger" href="/deleteStudent?sid=<%= studentRolls[i] %>" role="button"> Delete </a></td>
+          </tr>
+         <% } %>
+       </table>   
+      </div>
+</div>

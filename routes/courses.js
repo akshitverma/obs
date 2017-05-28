@@ -34,6 +34,22 @@ router.post('/', function(req, res, next) {
           console.log("Course Added Successfully");
        }
 	});
+    var studentCourseNames= [ ];
+    var studentCourseIDS = [ ]; 
+    
+Course.find({}, function(err, course){
+       if(course)
+        {
+            var studentCoursesArray = course;
+            
+            console.log(studentCoursesArray)
+            for (var i=0; i<studentCoursesArray.length; i++)
+            {
+                studentCourseNames.push(studentCoursesArray[i].courseName.toString());
+                studentCourseIDS.push(studentCoursesArray[i].courseID.toString());   
+            }
+        }
+    }); 
     });
 
 module.exports = router;

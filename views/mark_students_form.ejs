@@ -1,0 +1,78 @@
+<% include partials/teacher_profile_head %>  
+<div class="container">
+      <div class="jumbotron" align='center'>
+     
+<!-- Form for adding Questions -->
+     <form class="form-signin" method="POST" action="/savemarks">
+          <div class="form-group">
+             <label for="typeSelect">Select Exam:</label>
+             <select class="form-control" id="course" name="course">
+                   <% for (var i=0; i < questionpaper.length; i++) { 
+               
+                   %>
+               <option value="<%= questionpaper[i] %>"> <%= questionpaper[i] %> </option>
+            <% } %>
+            </select>
+          </div>
+  
+<!--
+    <div class="form-group">      
+        <a class="btn btn-lg btn-primary" href="/entermarks" role="button">Enter Marks Now &raquo;</a>
+    </div>
+-->
+    <div class="table-responsive">
+                <table class="table table-striped">
+                      <tr>
+                        <th>Roll Number</th>
+                        <th>Student Name</th>
+                          <th>1.a</th>
+                          <th>1.b</th>
+                          <th>1.c</th>
+                          <th>1.d</th>
+                          <th>1.e</th>
+                          <th>1.f</th>
+                          <th>1.g</th>
+                          <th>1.h</th>
+                          <th>1.i</th>
+                          <th>1.j</th>
+                      </tr>
+                       <tr>
+                        <th> </th>
+                        <th> </th>
+                        <% for (var i=0; i <=10; i++) { 
+                        %>   
+                          <th> <%= questionpaperCOS[i] %></th>
+                        <% } %>   
+                        <% for (var j=11; j <=18; j++) { 
+                        %>   
+                          <th> <%= questionpaperCOS[j] %></th>
+                        <% } %>  
+                        <% for (var k=19; k <=21; k++) { 
+                        %>   
+                          <th> <%= questionpaperCOS[k] %></th>
+                        <% } %>     
+                      </tr>
+                      
+                      <% for (var i=0; i<studentNames.length; i++) { %> 
+                      <tr>
+                        <td> <%= studentRolls[i] %> </td>
+                        <td> <%= studentNames[i] %> </td>
+                        <td><input type="text" ></input> </td>
+                        <td><input type="text" ></input> </td>
+            <td><input type="text" ></input> </td>
+            <td><input type="text" ></input> </td>
+            <td><input type="text" ></input> </td>
+            <td><input type="text" ></input> </td>
+            <td><input type="text" ></input> </td>
+            <td><input type="text" ></input> </td>
+            <td><input type="text" ></input> </td>
+            <td><input type="text" ></input> </td>
+                      </tr>
+                     <% } %>
+            </table>        
+</div>
+      </form>
+    </div>
+</div>    
+</body>
+</html>

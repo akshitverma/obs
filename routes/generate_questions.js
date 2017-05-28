@@ -56,9 +56,9 @@ Questions.find({courseID: paper_course}, function(err, question){
        if(question)
         {
             var questionsArray = question;
-            var question_paper_part1 = "<h4>Part -I  Attempt all parts.  [2*10 = 20]</h4><ol>"
-            var question_paper_part2 = "<h4>Part -II  Attempt any four parts.  [5*4 = 20]</h4><ol>"
-            var question_paper_part3 = "<h4>Part -III  Attempt any two parts.  [2*10 = 20]</h4><ol>"
+            var question_paper_part1 = "<h4>Part - I  Attempt ALL parts.  [2*10 = 20]</h4><ol>"
+            var question_paper_part2 = "<h4>Part - II  Attempt any FIVE parts.  [10*5 = 50]</h4><ol>"
+            var question_paper_part3 = "<h4>Part - III  Attempt any TWO parts.  [15*2 = 30]</h4><ol>"
 
             console.log(questionsArray);
             var endPart1 = false;
@@ -67,8 +67,13 @@ Questions.find({courseID: paper_course}, function(err, question){
             var counter1 = 1; 
             var counter2 = 1; 
             var counter3 = 1;
+            
             var questionIDS = [];
-             shuffle(questionsArray);           
+            var questionDesc = [];
+            var questionCO = [];
+            var questionPart = [];
+            
+            shuffle(questionsArray);           
             for(var i=0; i<questionsArray.length; i++)
                 {
                     
@@ -84,12 +89,15 @@ Questions.find({courseID: paper_course}, function(err, question){
                             question_paper_part1 = question_paper_part1 + "<li>"+questionsArray[i].question_description+"</li>";
                             counter1++;
                             questionIDS.push(questionsArray[i]._id);
+                            questionDesc.push(questionsArray[i].question_description);
+                            questionCO.push(questionsArray[i].question_co);
+                            questionPart.push(questionsArray[i].question_section);    
                             console.log(questionIDS);
                             }
                         }
                     else if (questionsArray[i].question_section == '2' && endPart2 != true)
                         {
-                            if(counter2==6)
+                            if(counter2==9)
                                 {
                                     endPart2 = true;
                                     question_paper_part2 = question_paper_part2 + "</ol>";
@@ -99,6 +107,9 @@ Questions.find({courseID: paper_course}, function(err, question){
                                 question_paper_part2 = question_paper_part2 + "<li>"+questionsArray[i].question_description+"</li>";
                                 counter2++;
                                 questionIDS.push(questionsArray[i]._id);
+                                  questionDesc.push(questionsArray[i].question_description);
+                            questionCO.push(questionsArray[i].question_co);
+                            questionPart.push(questionsArray[i].question_section);  
                             }
                         }
                     else if (questionsArray[i].question_section == '3' && endPart3 != true)
@@ -114,6 +125,9 @@ Questions.find({courseID: paper_course}, function(err, question){
                             question_paper_part3 = question_paper_part3 + "<li>"+questionsArray[i].question_description+"</li>";
                             counter3++;                    
                              questionIDS.push(questionsArray[i]._id);
+                                  questionDesc.push(questionsArray[i].question_description);
+                            questionCO.push(questionsArray[i].question_co);
+                            questionPart.push(questionsArray[i].question_section);  
                             }
                         }
                     else
@@ -123,7 +137,7 @@ Questions.find({courseID: paper_course}, function(err, question){
                 }
                var question_paper = ""+question_paper_part1+question_paper_part2+question_paper_part3;
                
-                var newQuestionPaper = new QuestionPaper({questionID: questionIDS})
+                var newQuestionPaper = new QuestionPaper({examID: paper_course, examName: paper_course + " " + examName, questionID: questionIDS, questionDesc: questionDesc, questionCO: questionCO, questionPart: questionPart })
                 newQuestionPaper.save(function(err){
 
                 if ( err ) 
@@ -141,7 +155,7 @@ Questions.find({courseID: paper_course}, function(err, question){
                 //Generating Question Paper from HTML
                res.pdfFromHTML({
                  filename: 'generated.pdf',
-                 htmlContent: "<html><head></head><body><div align='center'><h2>Raj Kumar Goel Institute of Technology</h2><p></p><h4>Dept. of Information Technology</h4><p></p><h4>"+examName +"  Paper Code:"+paper_course+"</h4></div>" +question_paper+ "<h4 align='center'>******* Best of Luck! *******</h4></body></html>"
+                 htmlContent: "<html><head></head><body><div align='center'><h2>Raj Kumar Goel Institute of Technology</h2><p></p><h4>Dept. of Information Technology</h4><p></p><h4>"+examName +"</h4><h4>Paper Code:"+paper_course+"</h4></div>" +question_paper+ "<h4 align='center'>******* Best of Luck! *******</h4></body></html>"
         
                });
         }

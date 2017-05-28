@@ -1,0 +1,22 @@
+<% include partials/admin_profile_head %>  
+ <div class="container"> 
+      <div class="jumbotron" align='center'>
+     <p></p>
+<!-- For showing Courses in db -->
+    
+       <table class="table table-striped">
+          <tr>
+            <th>Subject Code</th>
+            <th>Course Name</th>
+            <th>Action</th>
+          </tr>
+          <% for (var i=0; i<studentCourseNames.length; i++) { %> 
+          <tr>
+            <td> <%= studentCourseIDS[i] %> </td>
+            <td> <%= studentCourseNames[i] %> </td>
+            <td><a class="btn btn-danger" href="/deleteCourse?cid=<%= studentCourseIDS[i] %>" role="button"> Delete </a></td>
+          </tr>
+         <% } %>
+       </table>   
+      </div>
+</div>
