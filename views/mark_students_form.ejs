@@ -6,7 +6,7 @@
      <form class="form-signin" method="POST" action="/savemarks">
           <div class="form-group">
              <label for="typeSelect">Select Exam:</label>
-             <select class="form-control" id="course" name="course">
+             <select class="form-control" id="exam" name="exam">
                    <% for (var i=0; i < questionpaper.length; i++) { 
                
                    %>
@@ -35,19 +35,31 @@
                           <th>1.h</th>
                           <th>1.i</th>
                           <th>1.j</th>
+                          <th>2.a</th>
+                          <th>2.b</th>
+                          <th>2.c</th>
+                          <th>2.d</th>
+                          <th>2.e</th>
+                          <th>2.f</th>
+                          <th>2.g</th>
+                          <th>2.h</th>
+                          <th>3.a</th>
+                          <th>3.b</th>
+                          <th>3.c</th>
+
                       </tr>
                        <tr>
                         <th> </th>
                         <th> </th>
-                        <% for (var i=0; i <=10; i++) { 
+                        <% for (var i=0; i <=9; i++) { 
                         %>   
                           <th> <%= questionpaperCOS[i] %></th>
                         <% } %>   
-                        <% for (var j=11; j <=18; j++) { 
+                        <% for (var j=10; j <=17; j++) { 
                         %>   
                           <th> <%= questionpaperCOS[j] %></th>
                         <% } %>  
-                        <% for (var k=19; k <=21; k++) { 
+                        <% for (var k=18; k <=20; k++) { 
                         %>   
                           <th> <%= questionpaperCOS[k] %></th>
                         <% } %>     
@@ -55,22 +67,42 @@
                       
                       <% for (var i=0; i<studentNames.length; i++) { %> 
                       <tr>
+                        
                         <td> <%= studentRolls[i] %> </td>
                         <td> <%= studentNames[i] %> </td>
-                        <td><input type="text" ></input> </td>
-                        <td><input type="text" ></input> </td>
-            <td><input type="text" ></input> </td>
-            <td><input type="text" ></input> </td>
-            <td><input type="text" ></input> </td>
-            <td><input type="text" ></input> </td>
-            <td><input type="text" ></input> </td>
-            <td><input type="text" ></input> </td>
-            <td><input type="text" ></input> </td>
-            <td><input type="text" ></input> </td>
+                        <td><input id="a<%= studentRolls[i] %>" name="a[]" type="text" ></td>
+                        <td><input id="b_<%= studentRolls[i] %>" name="b[]" type="text" ></td>
+                        <td><input id="c_<%= studentRolls[i] %>" name="c[]" type="text" ></td>
+                        <td><input id="d_<%= studentRolls[i] %>" name="d[]" type="text" ></td>
+                        <td><input id="e_<%= studentRolls[i] %>" name="e[]" type="text" ></td>
+                        <td><input id="f_<%= studentRolls[i] %>" name="f[]" type="text" ></td>
+                        <td><input id="g_<%= studentRolls[i] %>" name="g[]" type="text" ></td>
+                        <td><input id="h_<%= studentRolls[i] %>" name="h[]" type="text" ></td>
+                        <td><input id="i_<%= studentRolls[i] %>" name="i[]" type="text" ></td>
+                        <td><input id="j_<%= studentRolls[i] %>" name="j[]" type="text" ></td>
+                        <td><input id="k_<%= studentRolls[i] %>" name="k[]" type="text" ></td>
+                        <td><input id="l_<%= studentRolls[i] %>" name="l[]" type="text" ></td>
+                        <td><input id="m_<%= studentRolls[i] %>" name="m[]" type="text" ></td>
+                        <td><input id="n_<%= studentRolls[i] %>" name="n[]" type="text" ></td>
+                        <td><input id="o_<%= studentRolls[i] %>" name="o[]" type="text" ></td>
+                        <td><input id="p_<%= studentRolls[i] %>" name="p[]" type="text" ></td>
+                        <td><input id="q_<%= studentRolls[i] %>" name="q[]" type="text" ></td>
+                        <td><input id="r_<%= studentRolls[i] %>" name="r[]" type="text" ></td>
+                        <td><input id="s_<%= studentRolls[i] %>" name="s[]" type="text" ></td>
+                        <td><input id="t_<%= studentRolls[i] %>" name="t[]" type="text" ></td>
+                        <td><input id="u_<%= studentRolls[i] %>" name="u[]" type="text" ></td>
+
                       </tr>
                      <% } %>
             </table>        
 </div>
+         <div class="form-group">      
+            <button class="btn btn-lg btn-primary" role="button">Save and Continue.&raquo;</button>
+         </div>
+         <div class="form-group">      
+            <button class="btn btn-lg btn-primary" role="button">Generate CSV Report &raquo;</button>
+         </div>
+
       </form>
     </div>
 </div>    

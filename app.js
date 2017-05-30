@@ -23,6 +23,8 @@ var addStudents = require('./routes/students.js');
 var addQuestions = require('./routes/questions.js')
 var generateQuestions = require('./routes/generate_questions')
 var entermarks = require('./routes/marks.js');
+var savemarks = require('./routes/analysemarks.js');
+
 
 var app = express();
 
@@ -38,7 +40,7 @@ app.use(session({ cookie: { maxAge: 60000 },
                   saveUninitialized: false}));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
@@ -53,6 +55,7 @@ app.use('/addStudents', addStudents);
 app.use('/addQuestion', addQuestions);
 app.use('/generateQuestionPaper', generateQuestions);
 app.use('/entermarks', entermarks);
+app.use('/savemarks', savemarks);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

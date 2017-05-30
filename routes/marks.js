@@ -94,7 +94,9 @@ QuestionPaper.find({ examName: selected_paper }, function(err, selectedquestionp
             console.log("testing here");
                 //studentRolls[i] = studentArray[i].roll_no.toString();
                 //selectedquestionpaperNames[i] = selectedquestionpaperArray[i].examName;
-                selectedquestionpaperCOS = selectedquestionpaperArray[0].question_co;
+                selectedquestionpaperCOS = selectedquestionpaper[0].questionCO;
+            console.log("here is error");
+            console.log(selectedquestionpaperCOS);
                 
         
         }
@@ -104,16 +106,39 @@ QuestionPaper.find({ examName: selected_paper }, function(err, selectedquestionp
 
 //HIT 2 for Mark students Form
 router.post('/', function(req, res, next) {
+    selected_paper = req.body.exam;
+    getSelectedQuestionPaper();
     getCourses(); 
     getQuestionPaper();
     //console.log("Here")
     //console.log(req.session.username);
-    selected_paper = req.body.exam;
+   
     console.log("Hellooooooooo");
     getStudents();
-    getSelectedQuestionPaper();
    
-  res.render('mark_students_form.ejs', { title: 'Outcome Based Education Management System', name: req.session.username, message: "", studentNames: studentNames, studentRolls: studentRolls, questionpaper: questionpaperNames, questionpaperCOS: questionpaperCOS });
+   
+  res.render('mark_students_form.ejs', { title: 'Outcome Based Education Management System', name: req.session.username, message: "", studentNames: studentNames, studentRolls: studentRolls, questionpaper: questionpaperNames, questionpaperCOS: selectedquestionpaperCOS });
 });
+
+
+//router.post('/savemarks', function(req, res, next) {
+//    console.log("SAVING MARKS INITIATED!!");
+//
+//    var inp = "1q1303313008"
+//    selected_paper = req.body.exam;
+//    var toprint = req.body.inp;
+//    console.log(toprint);
+//    //    getSelectedQuestionPaper();
+//    // getCourses(); 
+//    //getQuestionPaper();
+//    //console.log("Here")
+//    //console.log(req.session.username);
+//    
+//        //getStudents();
+//   
+//   
+//    res.render('testing.ejs', { });
+//});
+
 
 module.exports = router;
