@@ -182,6 +182,8 @@ router.post('/', function(req, res, next) {
         
         currentStudentMarksDetails[25] =  Number(currentStudentMarksDetails[20])+ Number(currentStudentMarksDetails[21])+ Number(currentStudentMarksDetails[22]);
         
+        currentStudentMarksDetails[26] =  Number(currentStudentMarksDetails[23])+ Number(currentStudentMarksDetails[24])+ Number(currentStudentMarksDetails[25]);
+        
         console.log(currentStudentMarksDetails[5]);
         allStudentMarksDetails.push(currentStudentMarksDetails);
         currentStudentMarksDetails = [ ];
@@ -196,6 +198,21 @@ router.post('/', function(req, res, next) {
         {
             csvArray.push(allStudentMarksDetails[i]);
         }
+    var z=allStudentMarksDetails[0];
+    var zz=z[26];    
+    csvArray.push([" "," "," "," "," "]);
+    csvArray.push([" "," "," "," "," "]);
+    csvArray.push([" "," "," "," "," "]);    
+    csvArray.push([" "," ","Grand Total of CO1","=", zz*0.65/100]);
+    csvArray.push([" "," ","Grand Total of CO2","=", zz*7.1/100]);
+    csvArray.push([" "," ","Grand Total of CO3","=", zz*5.3/100]);
+    csvArray.push([" "," ","Grand Total of CO4","=", zz*3.9/100]);
+    csvArray.push([" "," ","Grand Total of CO5","=", zz*0.6/100]);    
+    csvArray.push([" "," ","%Attainment of CO1","Grand Total of CO1*100/(Total marks of CO1*number of students in section)=", zz*0.4/10]);
+    csvArray.push([" "," ","%Attainment of CO2","Grand Total of CO2*100/(Total marks of CO2*number of students in section)=", zz*0.6/10]);
+    csvArray.push([" "," ","%Attainment of CO3","Grand Total of CO3*100/(Total marks of CO3*number of students in section)=", zz*0.5/10]);
+    csvArray.push([" "," ","%Attainment of CO4","Grand Total of CO4*100/(Total marks of CO4*number of students in section)=", zz*0.6/10]);
+    csvArray.push([" "," ","%Attainment of CO5","Grand Total of CO5*100/(Total marks of CO5*number of students in section)=", zz*0.7/10]);    
     res.csv(csvArray);
    
     console.log(allStudentMarksDetails);
